@@ -1,0 +1,36 @@
+networks:
+  task-management-network:
+    driver: bridge
+    external: true
+
+services:
+  task-management-postgres:
+    image: postgres:15
+    container_name: task-management-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: task-management
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "Taskm*n@gmen!"
+    ports:
+      - "5432:5432"
+    networks:
+      - task-management-network
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  task-management-api:
+    build: .
+    container_name: task-management-api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - task-management-postgres
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - task-management-network
+
+volumes:
+  pgdata:
