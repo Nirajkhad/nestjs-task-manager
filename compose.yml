@@ -28,7 +28,6 @@ services:
       - task-management-postgres
     volumes:
       - .:/app
-      - /app/node_modules
     networks:
       - task-management-network
 
