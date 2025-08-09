@@ -5,12 +5,12 @@
 The Task Management API is a NestJS-based RESTful API that provides task management functionality with user authentication. The application allows users to create, read, update, and delete tasks while ensuring that users can only access their own tasks through JWT-based authentication.
 
 Key features include:
-
 - User registration and authentication with JWT tokens
-- CRUD operations for tasks (Create, Read, Update, Delete)
-- Task filtering and search capabilities
+- CRUD operations for tasks (Create, Read, Update, Delete).
+- Task filtering and search capabilities based 
 - Role-based access control (users can only access their own tasks)
 - Docker-based deployment for easy setup and development
+- Every request and response logging
 
 ## Technology Stack
 
