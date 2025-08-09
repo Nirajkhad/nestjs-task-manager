@@ -1,98 +1,112 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Task Management API - Setup and Overview
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Application Description
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+The Task Management API is a NestJS-based RESTful API that provides task management functionality with user authentication. The application allows users to create, read, update, and delete tasks while ensuring that users can only access their own tasks through JWT-based authentication.
 
-## Description
+Key features include:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- User registration and authentication with JWT tokens
+- CRUD operations for tasks (Create, Read, Update, Delete)
+- Task filtering and search capabilities
+- Role-based access control (users can only access their own tasks)
+- Docker-based deployment for easy setup and development
 
-## Project setup
+## Technology Stack
 
-```bash
-$ pnpm install
-```
+- **Framework**: NestJS (TypeScript)
+- **Database**: PostgreSQL
+- **ORM**: TypeORM
+- **Authentication**: JWT (JSON Web Tokens)
+- **Validation**: class-validator
+- **Password Security**: bcryptjs
+- **Deployment**: Docker & Docker Compose
 
-## Compile and run the project
+## Setup Instructions
 
-```bash
-# development
-$ pnpm run start
+### Prerequisites
 
-# watch mode
-$ pnpm run start:dev
+- Node.js (v18 or higher)
+- Docker & Docker Compose
+- pnpm package manager
 
-# production mode
-$ pnpm run start:prod
-```
+### Installation
 
-## Run tests
+1. Clone the repository:
 
-```bash
-# unit tests
-$ pnpm run test
+   ```bash
+   git clone <repository-url>
+   cd task-management
+   ```
 
-# e2e tests
-$ pnpm run test:e2e
+2. Start the application with Docker:
 
-# test coverage
-$ pnpm run test:cov
-```
+   ```bash
+   bash docker-start.sh
+   ```
 
-## Deployment
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+### Executing Commands in the Container
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+To execute commands inside the running container, use the provided script:
 
 ```bash
-$ pnpm install -g @nestjs/mau
-$ mau deploy
+  bash app-exec.sh
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+This will open a shell session inside the running container where you can run commands like:
 
-## Resources
+- `pnpm run test` - Run unit tests
+- `pnpm run test:e2e` - Run end-to-end tests
+- `pnpm run test:cov` - Run tests with coverage report
 
-Check out a few resources that may come in handy when working with NestJS:
+### Environment Configuration
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+The application uses the following environment configuration:
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## API Usage Flow
 
-## Stay in touch
+### Authentication Flow
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+1. **User Registration**:
+    - Client sends POST request to `/auth/signup` with username and password
+    - Password is hashed using bcrypt before storage
+    - User is stored in database
 
-## License
+2. **User Authentication**:
+    - Client sends POST request to `/auth/signin` with credentials
+    - Server validates credentials against database
+    - JWT token is generated and returned to client
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+3. **Accessing Protected Resources**:
+    - Client includes JWT token in Authorization header
+    - AuthGuard validates token using JwtStrategy
+    - User context is attached to request
+    - Controller processes request with user context
+
+### Task Management Flow
+
+1. **Create Task**:
+    - Client sends POST request to `/tasks` with task data
+    - Controller validates input and calls service
+    - Service uses repository to store task in database
+    - Created task is returned to client
+
+2. **Get Tasks**:
+    - Client sends GET request to `/tasks` with optional filters
+    - Controller calls service with filter parameters
+    - Service uses repository to query database
+    - Filtered tasks are returned to client
+
+3. **Update Task Status**:
+    - Client sends PATCH request to `/tasks/:id/status` with new status
+    - Controller validates input and calls service
+    - Service uses repository to update task in database
+    - Updated task is returned to client
+
+4. **Delete Task**:
+    - Client sends DELETE request to `/tasks/:id`
+    - Controller calls service to delete task
+    - Service uses repository to remove task from database
+    - Success message is returned to client
